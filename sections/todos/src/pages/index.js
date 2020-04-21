@@ -29,15 +29,17 @@ export default () => {
       canceled = true;
     };
   }, [status]);
+
+  const reloadTodos = () => setStatus("loading");
   return (
     <main>
       <h1 className={styles.heading}>JAMStack Todos!</h1>
-      <Form setStatus={setStatus} />
+      <Form reloadTodos={reloadTodos} />
       {todos ? (
         <ul className={styles.todos}>
           {todos.map((todo) => (
             <li key={todo._id} className={styles.todo}>
-              <Todo todo={todo} />
+              <Todo todo={todo} reloadTodos={reloadTodos} />
             </li>
           ))}
         </ul>

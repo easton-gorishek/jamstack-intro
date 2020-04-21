@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./form.module.css";
 
-const Form = ({ setStatus }) => {
+const Form = ({ reloadTodos }) => {
   const [text, setText] = useState("");
 
   const handleSubmit = async (event) => {
@@ -12,7 +12,7 @@ const Form = ({ setStatus }) => {
     await axios.post("/api/create-todo", { text });
 
     setText("");
-    setStatus("loading");
+    reloadTodos();
   };
 
   return (
